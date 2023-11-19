@@ -3,6 +3,7 @@ import {
     getFirestore,
     collection,
     addDoc,
+    serverTimestamp,
 } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -41,6 +42,7 @@ function submitForm(e) {
         phone1: phone1,
         orgname: orgname,
         msg: msg,
+        timestamp: serverTimestamp(),
     })
         .then(() => {
             alert("Message Sent");
