@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="firebase.js" type="module"></script>
+    </head>
+    <body>
+        <script src="admin.js" type="module"></script>
+
+        <div class="relative overflow-x-auto">
+            <table
+                class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+            >
+                <thead
+                    class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+                >
+                    <tr>
+                        <th scope="col" class="px-6 py-3">First Name</th>
+                        <th scope="col" class="px-6 py-3">Last Name</th>
+                        <th scope="col" class="px-6 py-3">Organization</th>
+                        <th scope="col" class="px-6 py-3">Email</th>
+                        <th scope="col" class="px-6 py-3">Phone</th>
+                        <th scope="col" class="px-6 py-3">Message</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody"></tbody>
+            </table>
+        </div>
+    </body>
+</html>
