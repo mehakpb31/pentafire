@@ -1,4 +1,4 @@
-import { onSnapshot, collection, db } from "./firebase.js";
+import { onSnapshot, collection, db } from "../firebase.js";
 
 const contactFormDB = collection(db, "contactForm");
 
