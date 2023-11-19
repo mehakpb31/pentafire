@@ -1,41 +1,40 @@
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js';
-import { getDatabase, ref,push, set } from 'https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js';
-
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+import {
+    getFirestore,
+    collection,
+    addDoc,
+} from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCkC1wtb888skiSNqeCdpzQP40wO66rTGc",
-  authDomain: "pentarivertechnologies-6fd54.firebaseapp.com",
-  databaseURL: "https://pentarivertechnologies-6fd54-default-rtdb.firebaseio.com",
-  projectId: "pentarivertechnologies-6fd54",
-  storageBucket: "pentarivertechnologies-6fd54.appspot.com",
-  messagingSenderId: "55988809377",
-  appId: "1:55988809377:web:38c4f2b379504a9be10ae0",
-  measurementId: "G-WHT6CJX73Z"
+    apiKey: "AIzaSyCkC1wtb888skiSNqeCdpzQP40wO66rTGc",
+    authDomain: "pentarivertechnologies-6fd54.firebaseapp.com",
+    databaseURL:
+        "https://pentarivertechnologies-6fd54-default-rtdb.firebaseio.com",
+    projectId: "pentarivertechnologies-6fd54",
+    storageBucket: "pentarivertechnologies-6fd54.appspot.com",
+    messagingSenderId: "55988809377",
+    appId: "1:55988809377:web:38c4f2b379504a9be10ae0",
+    measurementId: "G-WHT6CJX73Z",
 };
 
-//   initialise friebase
 const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
+const db = getFirestore(app);
 
+document.getElementById("contactForm").addEventListener("submit", submitForm);
 
-  // reference database
-  const contactFormDB = ref(database, "contactForm");
-  document.getElementById("contactForm").addEventListener("submit", submitForm);
+const contactFormDB = collection(db, "contactForm");
 
-  function submitForm(e){
+function submitForm(e) {
     e.preventDefault();
 
-    var fname = getElementVal('fname');
-    var lname = getElementVal('lname');
-    var email1 = getElementVal('email1');
-    var phone1 = getElementVal('phone1');
-    var orgname = getElementVal('orgname');
-    var msg = getElementVal('msg');
-    saveMessages(fname, lname, email1, phone1, orgname, msg);
-  }
-  const saveMessages = (fname, lname, email1, phone1, orgname, msg) => {
-    const newContactFormRef = push(contactFormDB); // Get a new reference for a child
-    set(newContactFormRef, {
+    var fname = getElementVal("fname");
+    var lname = getElementVal("lname");
+    var email1 = getElementVal("email1");
+    var phone1 = getElementVal("phone1");
+    var orgname = getElementVal("orgname");
+    var msg = getElementVal("msg");
+
+    addDoc(contactFormDB, {
         fname: fname,
         lname: lname,
         email1: email1,
@@ -43,16 +42,16 @@ const database = getDatabase(app);
         orgname: orgname,
         msg: msg,
     })
-    .then(() => {
-        console.log("Data saved succesfully")// Data saved successfully
-        // You can add any post-save actions here
-    })
-    .catch((error) => {
-      console.log("error ")// Data saved successfully
-      // Handle any errors here
-    });
-};
+        .then(() => {
+            alert("Message Sent");
+        })
+        .catch((error) => {
+            alert(error.message);
+        });
 
-  const getElementVal = (id) => {
+    document.getElementById("contactForm").reset();   
+}
+
+const getElementVal = (id) => {
     return document.getElementById(id).value;
-  };
+};
