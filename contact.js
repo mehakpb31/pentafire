@@ -1,3 +1,5 @@
+import { db, collection, addDoc, serverTimestamp } from "./firebase.js";
+
 document.getElementById("contactForm").addEventListener("submit", submitForm);
 
 const contactFormDB = collection(db, "contactForm");
