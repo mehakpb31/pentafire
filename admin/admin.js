@@ -1,4 +1,11 @@
-import { onSnapshot, collection, db } from "../firebase.js";
+import { onSnapshot, collection, db, getAuth } from "../firebase.js";
+
+const auth = getAuth();
+const user = auth.currentUser;
+
+if (!user) {
+    navigateTo("/login");
+}
 
 const contactFormDB = collection(db, "contactForm");
 

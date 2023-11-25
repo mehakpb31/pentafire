@@ -6,6 +6,10 @@ import {
     serverTimestamp,
     onSnapshot,
 } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+import {
+    getAuth,
+    signInWithEmailAndPassword,
+} from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyCkC1wtb888skiSNqeCdpzQP40wO66rTGc",
@@ -22,4 +26,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-export { db, collection, addDoc, serverTimestamp, onSnapshot };
+export {
+    db,
+    collection,
+    addDoc,
+    serverTimestamp,
+    onSnapshot,
+    getAuth,
+    signInWithEmailAndPassword,
+};
