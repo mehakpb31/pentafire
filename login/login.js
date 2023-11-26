@@ -4,7 +4,7 @@ const auth = getAuth();
 const user = auth.currentUser;
 
 if (user) {
-    navigateTo("/admin");
+    window.location.href = "/admin";
 }
 
 const loginForm = document.querySelector("#form");
@@ -18,8 +18,7 @@ loginForm.addEventListener("submit", (e) => {
     signInWithEmailAndPassword(getAuth(), email, password)
         .then((userCredential) => {
             const user = userCredential.user;
-
-            navigateTo("/admin");
+            window.location.href = "/admin";
         })
         .catch((error) => {
             const errorCode = error.code;

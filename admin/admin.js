@@ -4,7 +4,7 @@ const auth = getAuth();
 const user = auth.currentUser;
 
 if (!user) {
-    navigateTo("/login");
+    window.location.href = "/login";
 }
 
 const contactFormDB = collection(db, "contactForm");
