@@ -1,11 +1,15 @@
-import { onSnapshot, collection, db, getAuth } from "../firebase.js";
+import { onSnapshot, collection, db, getAuth, onAuthStateChanged } from "../firebase.js";
 
 const auth = getAuth();
 const user = auth.currentUser;
 
-if (!user) {
-    window.location.href = "/login";
-}
+onAuthStateChanged(auth, (user) => {
+    if (!user) {
+        window.location.href = "/login";
+    }
+
+    user = auth.currentUser;
+});
 
 const contactFormDB = collection(db, "contactForm");
 

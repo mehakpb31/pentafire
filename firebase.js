@@ -9,6 +9,7 @@ import {
 import {
     getAuth,
     signInWithEmailAndPassword,
+    onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -34,4 +35,5 @@ export {
     onSnapshot,
     getAuth,
     signInWithEmailAndPassword,
+    onAuthStateChanged,
 };
